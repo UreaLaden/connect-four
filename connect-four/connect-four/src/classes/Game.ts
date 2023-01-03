@@ -56,31 +56,39 @@ export class Game {
     }
   };
 
-  public setNode = (key: string, playerType: PlayerType): void => {
+  public setNode = (columnKey: string, playerType: PlayerType): string | null => {
     //Confirm we are able to add new node to the column
-    if (!this.columnQueue.has(key)) return;
+    console.log("Entering set node");
+    const key = columnKey.charCodeAt(0);
+    if (key < 0 || key > this._maxCols) return null;
     //If so confirm column has a queue
-    let column: string[] | undefined = this.columnQueue.get(key);
+    let column: string[] | undefined = this.columnQueue.get(columnKey);
     if (column === undefined) {
       //If not we create a queue
       column = [];
     }
-    if (column.length === this._maxRows) return;
+
+    console.log("Checking column length");
+    if (column.length === this._maxRows) return null;
 
     //then unshift the first node
     const newKey = String.fromCharCode(65 + column.length);
     column.unshift(newKey);
-    this.columnQueue.set(key, column);
-    const columnIndex = key.charCodeAt(0) - 65;
+    this.columnQueue.set(columnKey, column);
+    const columnIndex = columnKey.charCodeAt(0) - 65;
     const rowIndex = column.indexOf(newKey);
 
     const node: Node = new Node([columnIndex, rowIndex], playerType);
     node.setNeighbours(this.getNeighbours(node));
     //If the node is an option and is available we occupy the location
+    console.log(`Occupied Node Size: ${this.unAvailableCoords.size}`);
     if(this.availableCoords.has(node.getLocationString) && !this.unAvailableCoords.has(node.getLocationString)){
         this.unAvailableCoords.set(node.getLocationString,node.getLocation);
+        console.log(`Occupied Node Size: ${this.unAvailableCoords.size}`);
         this.gameWon = this.checkWin(node);
+        return node.getLocationString;
     }
+    return null;
   };
 
   public getNeighbours = (node: Node): Node[] => {
@@ -211,4 +219,12 @@ export class Game {
     }
     return false;
   };
+
+  get getAvailableCoords(){
+    return this.availableCoords;
+  }
+
+  get getOccupiedCoords(){
+    return this.unAvailableCoords;
+  }
 }
