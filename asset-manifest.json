@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/connect-four/static/css/main.073c9b0a.css",
+    "main.js": "/connect-four/static/js/main.d586577d.js",
+    "static/js/787.f9aae9f3.chunk.js": "/connect-four/static/js/787.f9aae9f3.chunk.js",
+    "static/media/logo.svg": "/connect-four/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/connect-four/index.html",
+    "main.073c9b0a.css.map": "/connect-four/static/css/main.073c9b0a.css.map",
+    "main.d586577d.js.map": "/connect-four/static/js/main.d586577d.js.map",
+    "787.f9aae9f3.chunk.js.map": "/connect-four/static/js/787.f9aae9f3.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.d586577d.js"
+  ]
+}
