@@ -1,6 +1,6 @@
 # Frontend Mentor - Connect Four game
 
-![Design preview for the Connect Four game coding challenge](./preview.jpg)
+![Design preview for the Connect Four game coding challenge](./connect-four/preview.jpg)
 
 ## Welcome! 👋
 
