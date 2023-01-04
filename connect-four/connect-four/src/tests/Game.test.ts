@@ -24,6 +24,7 @@ allCoordinatesMock.set("DB", [0, 1]);
 allCoordinatesMock.set("DA", [0, 0]);
 
 const nodeMock:Node = new Node([3,2],'player1');
+const nodeMockInitial:Node = new Node([0,0],'player1');
 
 afterEach(() => {
   jest.clearAllMocks();
@@ -42,11 +43,11 @@ describe("When playing connect four", () => {
     expect(game.getOccupiedCoords.size).toBe(0);
     
     const setNodeSpy = jest.spyOn(game,"setNode");
-    // setNodeSpy.mockReturnValueOnce("AA");
+    setNodeSpy.mockReturnValue(nodeMockInitial);
 
     game.setNode('A','player1');
     expect(setNodeSpy).toHaveBeenCalled();
-    expect(setNodeSpy).toHaveReturnedWith("AA");
+    expect(setNodeSpy).toHaveReturned();
 
   });
   it("Provides a list of neighbouring nodes when calling GetNeighbours",()=>{

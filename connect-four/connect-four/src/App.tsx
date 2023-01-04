@@ -1,5 +1,6 @@
-import './App.css';
+import { styles } from './App.css';
 import { Game } from './classes/Game';
+import MainMenu from './components/MainMenu';
 
 function App() {
   const game:Game = new Game(4,4);
@@ -28,8 +29,8 @@ function App() {
   console.table(n10?.getLocationString);
   console.log(game.gameWon);
   return (
-    <div className="App">
-        Hello World!!
+    <div className={styles.AppContainer}>
+        <MainMenu/>
     </div>
   );
 }
