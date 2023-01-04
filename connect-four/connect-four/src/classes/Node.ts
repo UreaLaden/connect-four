@@ -5,9 +5,9 @@ export class Node {
     private _playerType:PlayerType;
     private _neighbours:Node[];
 
-  constructor(location:Coordinate,playedBy:PlayerType) {
+  constructor(location:Coordinate,playedBy?:PlayerType) {
     this._coordinate = location;
-    this._playerType = playedBy;
+    this._playerType = playedBy || 'temp';
     this._neighbours = [];
   }
 
@@ -19,7 +19,7 @@ export class Node {
     }
     
     get getLocationString(){
-      return `${String.fromCharCode(this._coordinate[0])}${String.fromCharCode(this._coordinate[1])}`;
+      return `${String.fromCharCode(this._coordinate[0] + 65)}${String.fromCharCode(this._coordinate[1] + 65)}`;
   }
 
   get getPlayerType(){

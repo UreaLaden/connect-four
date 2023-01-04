@@ -23,7 +23,7 @@ allCoordinatesMock.set("DC", [0, 2]);
 allCoordinatesMock.set("DB", [0, 1]);
 allCoordinatesMock.set("DA", [0, 0]);
 
-const nodeInPlay:Node = new Node([0,0],'player1');
+const nodeMock:Node = new Node([3,2],'player1');
 
 afterEach(() => {
   jest.clearAllMocks();
@@ -42,10 +42,48 @@ describe("When playing connect four", () => {
     expect(game.getOccupiedCoords.size).toBe(0);
     
     const setNodeSpy = jest.spyOn(game,"setNode");
-    setNodeSpy.mockReturnValueOnce("AA");
+    // setNodeSpy.mockReturnValueOnce("AA");
 
     game.setNode('A','player1');
     expect(setNodeSpy).toHaveBeenCalled();
     expect(setNodeSpy).toHaveReturnedWith("AA");
+
+  });
+  it("Provides a list of neighbouring nodes when calling GetNeighbours",()=>{
+    const game:Game = new Game(4,4);
+    expect(game.getAvailableCoords.size).toEqual(allCoordinatesMock.size);
+    expect(game.getOccupiedCoords.size).toEqual(0);
+
+    const neighbourSpy = jest.spyOn(game,'getNeighbours');
+
+    game.setNode("D", 'player1');//3,3
+    game.setNode("D", 'player1');//start (3,2)
+    game.setNode("D", 'player1');// 3,1
+    game.setNode("D", 'player1');// 3,0
+    game.setNode("C", 'player1');// 2,3
+    game.setNode("C", 'player1');// 2,2
+    game.setNode("C", 'player1');// 2,1
+    game.setNode("C", 'player1');// 2,0
+    game.setNode("B", 'player1');// 1,3
+    game.setNode("B", 'player1');//1,2
+    game.setNode("B", 'player1'); //1,1
+    game.setNode("B", 'player1'); //1,0
+    game.setNode("A", 'player1'); //0,3
+    game.setNode("A", 'player1'); // 0,2
+    game.setNode("A", 'player1');// 0,1
+    game.setNode("A", 'player1');//0,0
+
+    neighbourSpy.mockReturnValueOnce([
+      new Node([2,2],'player1'),
+      new Node([4,2],'player1'),
+      new Node([2,1],'player1'),
+      new Node([2,2],'player1'),
+      new Node([4,1],'player1')
+    ]);
+    const result = game.getNeighbours(nodeMock);
+
+    expect(neighbourSpy).toHaveBeenCalled();
+    expect(neighbourSpy).toHaveReturnedWith(result);
+    expect(result).toHaveLength(5);
   })
 });

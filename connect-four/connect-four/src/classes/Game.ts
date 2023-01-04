@@ -23,11 +23,11 @@ export class Game {
   private _maxCols: number;
   private _maxRows: number;
   private availableCoords: Map<string, Coordinate>;
-  private unAvailableCoords: Map<string, Coordinate>;
+  private unAvailableCoords: Map<string, Node>;
   private columnsInPlay: string[];
   private columnQueue: Map<string, string[]>;
-  public gameWon:boolean;
-  public winner:PlayerType | undefined;
+  public gameWon: [boolean, Direction, Node[]] | false;
+  public winner: PlayerType | undefined;
   private static _Instance: Game;
   public static Instance() {
     return this._Instance || (this._Instance = new this(7, 6));
@@ -37,7 +37,7 @@ export class Game {
     this._maxCols = maxCols;
     this._maxRows = maxRows;
     this.availableCoords = new Map<string, Coordinate>();
-    this.unAvailableCoords = new Map<string, Coordinate>();
+    this.unAvailableCoords = new Map<string, Node>();
     this.columnQueue = new Map<string, string[]>();
     this.columnsInPlay = [];
     this.gameWon = false;
@@ -56,10 +56,9 @@ export class Game {
     }
   };
 
-  public setNode = (columnKey: string, playerType: PlayerType): string | null => {
+  public setNode = (columnKey: string, playerType: PlayerType): Node | null => {
     //Confirm we are able to add new node to the column
-    console.log("Entering set node");
-    const key = columnKey.charCodeAt(0);
+    const key = columnKey.charCodeAt(0) - 65;
     if (key < 0 || key > this._maxCols) return null;
     //If so confirm column has a queue
     let column: string[] | undefined = this.columnQueue.get(columnKey);
@@ -67,8 +66,6 @@ export class Game {
       //If not we create a queue
       column = [];
     }
-
-    console.log("Checking column length");
     if (column.length === this._maxRows) return null;
 
     //then unshift the first node
@@ -76,17 +73,17 @@ export class Game {
     column.unshift(newKey);
     this.columnQueue.set(columnKey, column);
     const columnIndex = columnKey.charCodeAt(0) - 65;
-    const rowIndex = column.indexOf(newKey);
-
+    const rowIndex = column.length - 1;
     const node: Node = new Node([columnIndex, rowIndex], playerType);
     node.setNeighbours(this.getNeighbours(node));
     //If the node is an option and is available we occupy the location
-    console.log(`Occupied Node Size: ${this.unAvailableCoords.size}`);
-    if(this.availableCoords.has(node.getLocationString) && !this.unAvailableCoords.has(node.getLocationString)){
-        this.unAvailableCoords.set(node.getLocationString,node.getLocation);
-        console.log(`Occupied Node Size: ${this.unAvailableCoords.size}`);
-        this.gameWon = this.checkWin(node);
-        return node.getLocationString;
+    if (
+      this.availableCoords.has(node.getLocationString) &&
+      !this.unAvailableCoords.has(node.getLocationString)
+    ) {
+      this.unAvailableCoords.set(node.getLocationString, node);
+      this.gameWon = this.checkWin(node);
+      return node;
     }
     return null;
   };
@@ -113,7 +110,7 @@ export class Game {
     return neighbours;
   };
 
-  public checkWin = (node: Node): boolean => {
+  public checkWin = (node: Node): [boolean, Direction, Node[]] | false => {
     const hWin = this._checkWinHelper(node, Directions.HORIZONTAL);
     const vWin = this._checkWinHelper(node, Directions.VERTICAL);
     const ldWin = this._checkWinHelper(node, Directions.LEFT_DIAGONAL);
@@ -122,7 +119,10 @@ export class Game {
     return hWin || vWin || ldWin || rdWin;
   };
 
-  private _checkWinHelper = (node: Node, direction: Direction): boolean => {
+  private _checkWinHelper = (
+    node: Node,
+    direction: Direction
+  ): [boolean, Direction, Node[]] | false => {
     const currentSet: Node[] = [node];
 
     let tempNodePos: Node;
@@ -144,7 +144,7 @@ export class Game {
     let xNeg: number;
     let yNeg: number;
     for (let i = 0; i <= 4; i++) {
-      if (currentSet.length === 4) return true;
+      if (currentSet.length === 4) return [true, direction, currentSet];
       counter++;
       switch (direction) {
         case Directions.HORIZONTAL:
@@ -153,13 +153,24 @@ export class Game {
           if (pos >= 0 && pos < this._maxCols) {
             tempNodePos = new Node([pos, node.getLocation[1]], "temp");
             if (this.unAvailableCoords.has(tempNodePos.getLocationString)) {
-              currentSet.push(tempNodePos);
+              const tNode = this.unAvailableCoords.get(
+                tempNodePos.getLocationString
+              );
+
+              if(tNode?.getPlayerType === node.getPlayerType ){
+                currentSet.push(tNode!);
+              }
             }
           }
           if (neg >= 0) {
             tempNodeNeg = new Node([neg, node.getLocation[1]], "temp");
             if (this.unAvailableCoords.has(tempNodeNeg.getLocationString)) {
-              currentSet.push(tempNodeNeg);
+              const tNode = this.unAvailableCoords.get(
+                tempNodeNeg.getLocationString
+              );
+              if(tNode?.getPlayerType === node.getPlayerType ){
+                currentSet.push(tNode!);
+              }
             }
           }
           break;
@@ -169,13 +180,23 @@ export class Game {
           if (pos >= 0 && pos < this._maxCols) {
             tempNodePos = new Node([node.getLocation[0], pos], "temp");
             if (this.unAvailableCoords.has(tempNodePos.getLocationString)) {
-              currentSet.push(tempNodePos);
+              const tNode = this.unAvailableCoords.get(
+                tempNodePos.getLocationString
+              );
+              if(tNode?.getPlayerType === node.getPlayerType ){
+                currentSet.push(tNode!);
+              }
             }
           }
           if (neg >= 0) {
             tempNodeNeg = new Node([node.getLocation[0], neg], "temp");
             if (this.unAvailableCoords.has(tempNodeNeg.getLocationString)) {
-              currentSet.push(tempNodeNeg);
+              const tNode = this.unAvailableCoords.get(
+                tempNodeNeg.getLocationString
+              );
+              if(tNode?.getPlayerType === node.getPlayerType ){
+                currentSet.push(tNode!);
+              }
             }
           }
           break;
@@ -184,47 +205,76 @@ export class Game {
           yPos = startY + counter;
           xNeg = startX - counter;
           yNeg = startY - counter;
-          if(xPos < this._maxCols && yPos < this._maxRows){
-              tempNodeUpperLeft = new Node([xNeg, yPos], "temp"); // Upper Left Diagonal
-              if(this.unAvailableCoords.has(tempNodeUpperLeft.getLocationString)){
-                currentSet.push(tempNodeUpperLeft);
+          if (xPos < this._maxCols && yPos < this._maxRows) {
+            tempNodeUpperLeft = new Node([xNeg, yPos], "temp"); // Upper Left Diagonal
+            if (
+              this.unAvailableCoords.has(tempNodeUpperLeft.getLocationString)
+            ) {
+              const tNode = this.unAvailableCoords.get(
+                tempNodeUpperLeft.getLocationString
+              );
+              if(tNode?.getPlayerType === node.getPlayerType ){
+                currentSet.push(tNode!);
               }
             }
-            if(xNeg > -1 && yPos < this._maxRows){
-                tempNodeLowerRight = new Node([xPos, yNeg], "temp"); // Lower Right Diagonal
-                if(this.unAvailableCoords.has(tempNodeLowerRight.getLocationString)){
-                    currentSet.push(tempNodeLowerRight)
-                }
+          }
+          if (xNeg > -1 && yPos < this._maxRows) {
+            tempNodeLowerRight = new Node([xPos, yNeg], "temp"); // Lower Right Diagonal
+            if (
+              this.unAvailableCoords.has(tempNodeLowerRight.getLocationString)
+            ) {
+              const tNode = this.unAvailableCoords.get(
+                tempNodeLowerRight.getLocationString
+              );
+              if(tNode?.getPlayerType === node.getPlayerType ){
+                currentSet.push(tNode!);
+              }
             }
+          }
           break;
         case Directions.RIGHT_DIAGONAL:
-            xPos = startX + counter;
-            yPos = startY + counter;
-            xNeg = startX - counter;
-            yNeg = startY - counter;
-            if(xPos < this._maxCols && yPos < this._maxRows){
-                tempNodeUpperRight = new Node([xPos, yPos], "temp"); //Upper Right Diagonal
-                if(this.unAvailableCoords.has(tempNodeUpperRight.getLocationString)){
-                  currentSet.push(tempNodeUpperRight);
-                }
+          xPos = startX + counter;
+          yPos = startY + counter;
+          xNeg = startX - counter;
+          yNeg = startY - counter;
+          if (xPos < this._maxCols && yPos < this._maxRows) {
+            tempNodeUpperRight = new Node([xPos, yPos], "temp"); //Upper Right Diagonal
+            if (
+              this.unAvailableCoords.has(tempNodeUpperRight.getLocationString)
+            ) {
+              const tNode = this.unAvailableCoords.get(
+                tempNodeUpperRight.getLocationString
+              );
+              currentSet.push(tempNodeUpperRight);
+              if(tNode?.getPlayerType === node.getPlayerType ){
+                currentSet.push(tNode!);
               }
-            if(xNeg > -1 && yNeg > -1)  {
-                tempNodeLowerLeft = new Node([xNeg, yNeg], "temp"); // Lower Left Diagonal
-                if(this.unAvailableCoords.has(tempNodeLowerLeft.getLocationString)){
-                    currentSet.push(tempNodeLowerLeft);
-                  }
             }
+          }
+          if (xNeg > -1 && yNeg > -1) {
+            tempNodeLowerLeft = new Node([xNeg, yNeg], "temp"); // Lower Left Diagonal
+            if (
+              this.unAvailableCoords.has(tempNodeLowerLeft.getLocationString)
+            ) {
+              const tNode = this.unAvailableCoords.get(
+                tempNodeLowerLeft.getLocationString
+              );
+              if(tNode?.getPlayerType === node.getPlayerType ){
+                currentSet.push(tNode!);
+              }
+            }
+          }
           break;
       }
     }
     return false;
   };
 
-  get getAvailableCoords(){
+  get getAvailableCoords() {
     return this.availableCoords;
   }
 
-  get getOccupiedCoords(){
+  get getOccupiedCoords() {
     return this.unAvailableCoords;
   }
 }
