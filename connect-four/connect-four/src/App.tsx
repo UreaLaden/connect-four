@@ -1,6 +1,10 @@
 import { styles } from './App.css';
 import { Game } from './classes/Game';
 import MainMenu from './components/MainMenu';
+import { registerIcons } from "@fluentui/react"
+import { svgIcons } from './utils/SVGIcons';
+
+registerIcons(svgIcons);
 
 function App() {
   const game:Game = new Game(4,4);
