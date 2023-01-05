@@ -3,6 +3,7 @@ import { Game } from './classes/Game';
 import MainMenu from './components/MainMenu';
 import { registerIcons } from "@fluentui/react"
 import { svgIcons } from './utils/SVGIcons';
+import GameSpace from './components/GameSpace';
 
 registerIcons(svgIcons);
 
@@ -34,7 +35,7 @@ function App() {
   console.log(game.gameWon);
   return (
     <div className={styles.AppContainer}>
-        <MainMenu/>
+        <GameSpace/>
     </div>
   );
 }
