@@ -1,7 +1,7 @@
 import { Stack } from "@fluentui/react"
 import { Icon } from "@fluentui/react/lib/Icon"
 import { styles } from "./MainMenu.css"
-import pvpSvg from "../utils/images/player-vs-player.svg";
+
 const MainMenu = () => {
     return (
         <div className={styles.menuContainer}>
@@ -15,13 +15,17 @@ const MainMenu = () => {
                         className={styles.logo}
                     />
                     <button type={'button'} className={styles.pvpButton} onClick={() => { }}>
-                        <div>
+                        <div className={styles.buttonText}>
                             PLAY VS PLAYER
                         </div>
                         {/* <img className={styles.pvpSVG} src={"../utils/images/player-vs-player.svg"} alt={"player-vs-player-svg"}/> */}
-                        <Icon iconName={"player-vs-player-svg"} className={styles.pvpSVG}/>
+                        <Icon iconName={"player-vs-player-svg"} className={styles.pvpSVG} />
                     </button>
-                    <button type={'button'} className={styles.gameRulesButton} >GAME RULES</button>
+                    <button type={'button'} className={styles.gameRulesButton} >
+                        <div className={styles.buttonText}>
+                            GAME RULES
+                        </div>
+                    </button>
                 </Stack>
             </div>
         </div>
