@@ -16,8 +16,8 @@ export const styles = mergeStyleSets({
     width: "45%",
     border: "3px solid black",
     boxShadow: "0px 15px black",
+    backgroundColor: Colors.White,
     "@media screen and (min-width:1400px)": {
-      backgroundColor: Colors.Gold,
       height: "57vh",
       width: "40%",
       minWidth: "750px",
@@ -26,10 +26,8 @@ export const styles = mergeStyleSets({
       height: "52vh",
       width: "50%",
       minWidth: "600px",
-      backgroundColor: Colors.Pink,
     },
     "@media screen and (max-width:750px)": {
-      backgroundColor: Colors.White,
       minWidth: "400px",
       width: "80%",
       height: "47vh",
