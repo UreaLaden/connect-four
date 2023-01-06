@@ -1,5 +1,6 @@
 import { Stack } from "@fluentui/react"
 import { Icon } from "@fluentui/react/lib/Icon"
+import { Link } from "react-router-dom"
 import { styles } from "./MainMenu.css"
 
 const MainMenu = () => {
@@ -16,15 +17,13 @@ const MainMenu = () => {
                     />
                     <button type={'button'} className={styles.pvpButton} onClick={() => { }}>
                         <div className={styles.buttonText}>
-                            PLAY VS PLAYER
+                            <Link className={styles.buttonText} to="/game">PLAY VS PLAYER</Link>
                         </div>
                         {/* <img className={styles.pvpSVG} src={"../utils/images/player-vs-player.svg"} alt={"player-vs-player-svg"}/> */}
                         <Icon iconName={"player-vs-player-svg"} className={styles.pvpSVG} />
                     </button>
                     <button type={'button'} className={styles.gameRulesButton} >
-                        <div className={styles.buttonText}>
-                            GAME RULES
-                        </div>
+                        <Link className={styles.buttonText} to="/rules">GAME RULES</Link>
                     </button>
                 </Stack>
             </div>

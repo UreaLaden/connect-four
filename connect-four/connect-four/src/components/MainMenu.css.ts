@@ -12,6 +12,10 @@ export const styles = mergeStyleSets({
       width: "100%",
     },
   },
+  AppContainer: {
+    textAlign: 'center',
+    height:'100vh'
+  },
   modalContainer: {
     width: "inherit",
     "@media screen and (min-width:500px)": {
@@ -99,5 +103,7 @@ export const styles = mergeStyleSets({
   },
   buttonText: {
     paddingLeft: "1vw",
+    textDecoration:"none",
+    color:"inherit"
   },
 });
