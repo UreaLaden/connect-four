@@ -10,11 +10,14 @@ const GameSpace = (props: any) => {
             <div className={styles.logo}>Logo</div>
             <div className={styles.menuButtonTwo}>ResetButton</div>
             <div className={styles.homePlayer}>HomePlayer</div>
-            <div className={styles.gameBoard}>Play Area</div>
+            <div className={styles.gameBoard}>
+            <div className={styles.playerTurnMarker}>Last Play Maker</div>
+                Play Area
+            <div className={styles.playerTurnMarker}>Turn Marker</div>
+                </div>
             <div className={styles.awayPlayer}>AwayPlayer</div>
             <div className={styles.backgroundImage}>Background Image</div>
         </div>
-            <div className={styles.playerTurnMarker}>Turn Marker</div>
         </div>
     )
 }

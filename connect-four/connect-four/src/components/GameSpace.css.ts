@@ -19,7 +19,7 @@ export const styles = mergeStyleSets({
     menuButtonTwo:{
         "grid-column-start":2,
         "grid-column-end":3,
-        backgroundColor:Colors.Gold,
+        backgroundColor:Colors.Pink,
         border:"1px solid black"
     },
     logo:{
@@ -40,7 +40,8 @@ export const styles = mergeStyleSets({
     },
     gameBoard:{
         border:"1px solid black",
-        height:"70vh"
+        height:"70vh",
+        backgroundColor:Colors.White
     },
     backgroundImage:{
         backgroundColor:Colors.DarkMagenta,
