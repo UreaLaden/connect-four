@@ -16,7 +16,7 @@ export const styles = mergeStyleSets({
     },
     icon:{
         transform:"translateY(-75%)",
-        height:"1.8vw"
+        height:"2.4vw"
     },
     description:{
         fontSize:"1.5vh"

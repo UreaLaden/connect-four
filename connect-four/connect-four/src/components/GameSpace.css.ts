@@ -7,7 +7,7 @@ export const styles = mergeStyleSets({
         "grid-template-columns": "repeat(3,1fr)",
     },
     mainContainer:{
-        height:"100%",
+        height:"91vh",
         marginTop:"5%"
     },
     menuButtonOne:{
@@ -62,14 +62,15 @@ export const styles = mergeStyleSets({
     },
     playerMoveMarker:{
         position:"absolute",
-        top:"14%",
+        top:"14.5%",
+        right:"49%",
         "z-index":100,
-        boxShadow:"0px 25px black"
+        filter:"drop-shadow(0px 4px rgba(0,0,0))"
     },
     gameBoardBack:{
         gridColumn:"2 / 3",
         gridRow:"2 / 3",
-        height:"50vh",
+        height:"58vh",
         display:"flex",
         alignItems:"end",
         justifyContent:"center",
@@ -83,7 +84,6 @@ export const styles = mergeStyleSets({
         justifyContent:"center",
         transform:"translateY(-3%)",
         "z-index":"10",
-        border:"1px solid black"
     },
     board:{
         height:"80%"
@@ -104,7 +104,7 @@ export const styles = mergeStyleSets({
     },
     backgroundImage:{
         backgroundColor:Colors.DarkMagenta,
-        height:"48vh",
+        height:"55%",
         borderRadius:"5rem 5rem 0px 0px",
         gridColumn:"1 / -1",
         transform:"translateY(-10%)"

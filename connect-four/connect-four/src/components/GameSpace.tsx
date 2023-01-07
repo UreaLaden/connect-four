@@ -1,14 +1,28 @@
 import { Icon } from "@fluentui/react";
+import * as React from "react";
 import { Link } from "react-router-dom";
 import { Card } from "./Card";
 import { styles } from "./GameSpace.css";
 
+const enum Player {
+    PLAYER_ONE="Player1",
+    PLAYER_TWO="Player2",
+}
+
 const GameSpace = (props: any) => {
-    //Probably best to use css grid for the position
+    const [currentPlayer, setCurrentPlayer] = React.useState<string>("Player1");
+    const [endOfTurn,setEndOfTurn] = React.useState<boolean>(false);
+
+    React.useEffect(()=>{
+        if(endOfTurn){
+            setCurrentPlayer(currentPlayer === Player.PLAYER_ONE ? Player.PLAYER_TWO : Player.PLAYER_ONE);
+        }
+    },[currentPlayer,endOfTurn])
+
     return (
         <div className={styles.mainContainer}>
 
-            <Icon className={styles.playerMoveMarker} iconName={"marker-red-svg"} />
+            <Icon className={styles.playerMoveMarker} iconName={`marker-${currentPlayer === Player.PLAYER_TWO ? "yellow" : 'red'}-svg`} />
             <div className={styles.gameSpaceContainer}>
                 <div className={styles.menuButtonOne}>
                 </div>
@@ -40,8 +54,7 @@ const GameSpace = (props: any) => {
                     <Icon className={styles.boardFront} iconName={"board-layer-white-large-svg"} />
                 </div>
                 <div className={styles.playerTurnMarker}>
-                    {/* <Icon className={styles.turnIcon} iconName={'turn-background-red-svg'}/>                     */}
-                    <Icon className={styles.turnIcon} iconName={'turn-background-yellow-svg'} />
+                    <Icon className={styles.turnIcon} iconName={`turn-background-${currentPlayer === Player.PLAYER_TWO ? "yellow" : 'red'}-svg`} />
                 </div>
                 <div className={styles.awayPlayer}>
                     <Card
@@ -49,10 +62,9 @@ const GameSpace = (props: any) => {
                         description={"PLAYER 2"}
                         points={"32"} />
                 </div>
-                <div className={styles.backgroundImage}>Background Image</div>
             </div>
+            <div className={styles.backgroundImage}></div>
         </div>
-        // <div className={styles.playerMoveMarker}>Play Move Maker</div>
     )
 }
 
