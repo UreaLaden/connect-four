@@ -24,13 +24,13 @@ const GameSpace = (props: any) => {
             <Switch>
                 <Case condition={width <= 750}>
                     <MobileGrid currentPlayer={currentPlayer} />
-                </Case>
-                <Case condition={width > 750 && width < 1400}>
-                    <TabletGrid currentPlayer={currentPlayer} />
-                </Case>
+                </Case>                
                 <Case condition={width >= 1400}>
                     <DesktopGrid currentPlayer={currentPlayer} />
                 </Case>
+                <Default>
+                    <TabletGrid currentPlayer={currentPlayer} />
+                </Default>
             </Switch>
         </>
     )
