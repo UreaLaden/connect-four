@@ -26,7 +26,7 @@ const GameSpace = (props: any) => {
                     <MobileGrid currentPlayer={currentPlayer} />
                 </Case>                
                 <Case condition={width >= 1400}>
-                    <DesktopGrid currentPlayer={currentPlayer} />
+                    <DesktopGrid currentPlayer={currentPlayer} lastMove={'A'} />
                 </Case>
                 <Default>
                     <TabletGrid currentPlayer={currentPlayer} />

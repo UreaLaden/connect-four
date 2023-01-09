@@ -12,7 +12,7 @@ export const Header = () => {
             className={styles.logo}
         />
         <button className={styles.menuButton} type={'button'}>
-            <Link className={styles.menuLink} to="/">RESET</Link>
+            <Link className={styles.menuLink} to="/">RESTART</Link>
         </button>
     </>
     )

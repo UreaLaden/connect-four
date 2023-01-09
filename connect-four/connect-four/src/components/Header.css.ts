@@ -8,8 +8,12 @@ export const styles = mergeStyleSets({
     border: "none",
     ":hover": {
       backgroundColor: Colors.Pink,
+      pointer:"cursor"
     },
-    "@media screen and (min-width:1400px)": {},
+    "@media screen and (min-width:1400px)": {
+        width:"4.5vw",
+        height:"30%"
+    },
     "@media screen and (max-width:1400px)": {
         width:"10vw",
         height:"65%"
@@ -32,5 +36,10 @@ export const styles = mergeStyleSets({
     color: Colors.White,
     fontSize: "1.1rem",
     fontFamily: "inherit",
+    ":hover":{
+        textDecoration:"none",
+        color: Colors.White,
+        pointer:"cursor"
+    }
   },
 });

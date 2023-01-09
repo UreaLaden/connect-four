@@ -1,16 +1,55 @@
+import * as React from 'react';
 import { Icon } from "@fluentui/react";
-import { Player } from "../utils/helpers";
+import { Moves, Player } from "../utils/helpers";
 import { Card } from "./Card";
-import { styles } from "./GridStyles.css";
+import { markerPositions, styles } from "./GridStyles.css";
 import { Header } from "./Header";
 
 export const DesktopGrid = (props: any) => {
-    const { currentPlayer } = props;
+    const { currentPlayer,lastMove } = props;
+    
+    const getPositionClass = React.useCallback(()=>{
+        let positionClass:any;
+        switch(lastMove){
+            case 'A':
+                positionClass = markerPositions.A;
+                break;
+            case 'B':
+                positionClass = markerPositions.B;
+                break;
+            case 'C':
+                positionClass = markerPositions.C;
+                break;
+            case 'D':
+                positionClass = markerPositions.D;
+                break;
+            case 'E':
+                positionClass = markerPositions.E;
+                break;
+            case 'F':
+                positionClass = markerPositions.F;
+                break;
+            case 'G':
+                positionClass = markerPositions.G;
+                break;
+        }
+
+        return positionClass;
+    },[lastMove])
 
     return (
         <div className={styles.mainContainer}>
             <div className={styles.headerContainer}>
                 <Header />
+            </div>
+            <div className={markerPositions.markerContainer}>
+                <div className={getPositionClass()}>
+                    <Icon 
+                        className={markerPositions.icon}
+                        iconName={'marker-red-svg'}
+                    />
+                </div>
+
             </div>
             <div className={styles.playerOneStats}>
                 <Card

@@ -1,14 +1,78 @@
 import { mergeStyleSets } from "@fluentui/react";
 import { Colors } from "../utils/colors";
 
+export const markerPositions = mergeStyleSets({
+    markerContainer:{
+        gridRow:"2 / span 1",
+        gridColumn:"2 / span 1",
+        display:"grid",
+        gridTemplate:"1fr / repeat(7,1fr)",
+    },
+    A:{
+        gridColumn:"1 / span 1",
+        display:"flex",
+        alignItems:"center",
+        justifyContent:"center",
+        marginBottom:"10%"
+        
+    },
+    B:{
+        gridColumn:"2 / span 1",
+        display:"flex",
+        alignItems:"center",
+        justifyContent:"center",
+        marginBottom:"10%"
+    },
+    C:{
+        gridColumn:"3 / span 1",
+        display:"flex",
+        alignItems:"center",
+        justifyContent:"center",
+        marginBottom:"10%"
+    },
+    D:{
+        gridColumn:"4 / span 1",
+        display:"flex",
+        alignItems:"center",
+        justifyContent:"center",
+        marginBottom:"10%"
+    },
+    E:{
+        gridColumn:"5 / span 1",
+        display:"flex",
+        alignItems:"center",
+        justifyContent:"center",
+        marginBottom:"10%"
+    },
+    F:{
+        gridColumn:"6 / span 1",
+        display:"flex",
+        alignItems:"center",
+        justifyContent:"center",
+        marginBottom:"10%"
+    },
+    G:{
+        gridColumn:"-1 / span 1",
+        display:"flex",
+        alignItems:"center",
+        justifyContent:"center",
+        marginBottom:"25%",
+        transform:"translateX(-100%)"
+    },
+    icon:{
+        filter: "drop-shadow(0px 4px rgba(0,0,0))"
+
+    }
+})
+
 export const styles = mergeStyleSets({
   mainContainer: {
     height: "100%",
     display: "grid",
-    gridTemplate: "repeat(2,1fr) 5fr 2fr / 1fr",
     position: "relative",
     "@media screen and (min-width:1400px)": {
-      gridTemplate: "1fr 1fr 3fr 2fr / 1fr 1fr 1fr",
+      gridTemplate: "2fr 1fr 4fr 3fr / 1fr 1fr 1fr",
+      minWidth:"2100px"
     },
     "@media screen and (max-width:1400px)": {
       gridTemplate: "repeat(2,1fr) 5fr 2fr / 1fr",
@@ -48,11 +112,13 @@ export const styles = mergeStyleSets({
   },
   playerOneStats:{
     gridRow:"3 /  span 1",
-    gridColumn:"1 / span 1",    
+    gridColumn:"1 / span 1",  
+    display:"flex",
   },
   playerTwoStats:{
     gridRow:"3 / span 1",
-    gridColumn:"-2 / span 1"
+    gridColumn:"-2 / span 1",
+    display:"flex"
   },
   gameBoard: {
     backgroundColor: "transparent",
@@ -73,8 +139,9 @@ export const styles = mergeStyleSets({
     "@media screen and (min-width:1400px)": {
       borderRadius: "10% 10% 0 0",
       gridRow:"-1 / span 2",
-      gridColumn:"-1 / -1",
-      height: "10vh",
+      gridColumn:"1 / span 4",
+      height: "32vh",
+    //   transform:"translateY(-9%)"
     },
     "@media screen and (max-width:1400px)": {
         height: "37vh",
@@ -115,9 +182,11 @@ export const styles = mergeStyleSets({
     marginBottom: "-15%",
     position: "absolute",
     "z-index": 100,
-    "@media screen and (min-width:1400px)": {},
+    "@media screen and (min-width:1400px)": {
+        bottom:"-10%"
+    },
     "@media screen and (max-width:1400px)": {
-      bottom: "-20%",
+      bottom: "-18%",
     },
     "@media screen and (max-width:750px)": {
       transform: "translateY(25%)",
