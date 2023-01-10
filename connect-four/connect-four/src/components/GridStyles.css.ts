@@ -62,8 +62,104 @@ export const markerPositions = mergeStyleSets({
     icon:{
         filter: "drop-shadow(0px 4px rgba(0,0,0))"
 
+    },
+    coinContainer:{
+      height:"100%",
+      width:"100%",
+      "@media screen and (min-width:1400px)": {
+        gridColumn:"5 / span 4",
+        gridRow:"-1 / span 1",
+        display:"inline-grid",
+        gridTemplate:"25px repeat(6,1fr) / 25px repeat(7,1fr) 25px",
+        transform:"translateY(-4%)",
+      },
+      "@media screen and (max-width:1400px)": {
+        gridRow:"1 / span 2",
+        gridColumn:"2 / span 10"
+      },
+      "@media screen and (max-width:750px)": {
+        gridRow:"1 / -1",
+        gridColumn:"2 / -2",
+        transform:"translateY(-2%)"
+      },
+    },
+    coinSpace:{
+      gridRow:"2 / span 6",
+      gridColumn:"2 / span 7",
+      display:"grid",
+      gridTemplate:"repeat(6,1fr) / repeat(7,1fr)",
+      "@media screen and (max-width:1400px)": {
+        height:"96%"
+      },
+      "@media screen and (max-width:750px)": {
+        width:"100%",
+      },
     }
-})
+  })
+  export const coinA = mergeStyleSets({
+    posA:{},
+    posB:{},
+    posC:{},
+    posD:{},
+    posE:{},
+    posF:{},
+    posG:{}
+  });
+ 
+  export const coinB = mergeStyleSets({
+    posA:{},
+    posB:{},
+    posC:{},
+    posD:{},
+    posE:{},
+    posF:{},
+    posG:{}
+  });
+  export const coinC = mergeStyleSets({
+    posA:{},
+    posB:{},
+    posC:{},
+    posD:{},
+    posE:{},
+    posF:{},
+    posG:{}
+  });
+  export const coinD = mergeStyleSets({
+    posA:{},
+    posB:{},
+    posC:{},
+    posD:{},
+    posE:{},
+    posF:{},
+    posG:{}
+  });
+  export const coinE = mergeStyleSets({
+    posA:{},
+    posB:{},
+    posC:{},
+    posD:{},
+    posE:{},
+    posF:{},
+    posG:{}
+  });
+  export const coinF = mergeStyleSets({
+    posA:{},
+    posB:{},
+    posC:{},
+    posD:{},
+    posE:{},
+    posF:{},
+    posG:{}
+  });
+  export const coinG = mergeStyleSets({
+    posA:{},
+    posB:{},
+    posC:{},
+    posD:{},
+    posE:{},
+    posF:{},
+    posG:{}
+  });
 
 export const styles = mergeStyleSets({
   mainContainer: {
@@ -132,6 +228,10 @@ export const styles = mergeStyleSets({
       gridRow: "3 / -1",
       gridColumn: "1 / span 3",
     },
+    "@media screen and (max-width:1400px)": {},
+    "@media screen and (max-width:750px)": {
+      "grid-template-columns":"30px repeat(12,1fr) 30px"
+    }
   },
   backgroundImage: {
     borderRadius: "20% 20% 0px 0px",
@@ -141,7 +241,6 @@ export const styles = mergeStyleSets({
       gridRow:"-1 / span 2",
       gridColumn:"1 / span 4",
       height: "32vh",
-    //   transform:"translateY(-9%)"
     },
     "@media screen and (max-width:1400px)": {
         height: "37vh",
@@ -162,7 +261,7 @@ export const styles = mergeStyleSets({
     "z-index": 1,
     alignItems: "center",
     svg: {
-      transform: "scale(1.1) translateY(3%)",
+      transform: "scale(1.1) translateY(2%)",
     },
   },
   gameBoardFront: {
@@ -183,13 +282,13 @@ export const styles = mergeStyleSets({
     position: "absolute",
     "z-index": 100,
     "@media screen and (min-width:1400px)": {
-        bottom:"-10%"
+        bottom:"-5%"
     },
     "@media screen and (max-width:1400px)": {
       bottom: "-18%",
     },
     "@media screen and (max-width:750px)": {
-      transform: "translateY(25%)",
+      transform: "translateY(35%)",
     },
   },
   turnIcon: {

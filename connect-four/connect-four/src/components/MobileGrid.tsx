@@ -3,14 +3,15 @@ import { Player } from "../utils/helpers"
 import { Card } from "./Card"
 import { Header } from "./Header"
 import { styles } from "./GridStyles.css"
+import CoinSpace from "./CoinSpace"
 
 export const MobileGrid = (props: any) => {
-    const { currentPlayer } = props;
+    const { currentPlayer, pauseGame } = props;
     
     return (
         <div className={styles.mainContainer}>
             <div className={styles.headerContainer}>
-                <Header />
+                <Header pauseGame={pauseGame} />
             </div>
             <div className={styles.playerStats}>
                 <Card
@@ -25,6 +26,7 @@ export const MobileGrid = (props: any) => {
             <div className={styles.gameBoard}>
                 <Icon className={styles.gameBoardBack} iconName={"board-layer-black-small-svg"} />
                 <Icon className={styles.gameBoardFront} iconName={"board-layer-white-small-svg"} />
+                <CoinSpace currentPlayer={currentPlayer}/>
                 <div className={styles.playerTurnMarker}>
                     <Icon
                         className={styles.turnIcon}

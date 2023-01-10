@@ -6,6 +6,7 @@ export const styles = mergeStyleSets({
     borderRadius: "40px",
     backgroundColor: Colors.DarkMagenta,
     border: "none",
+    color:Colors.White,
     ":hover": {
       backgroundColor: Colors.Pink,
       pointer:"cursor"
@@ -20,7 +21,8 @@ export const styles = mergeStyleSets({
     },
     "@media screen and (max-width:750px)": {
         width:"30vw",
-        height:"65%"
+        height:"65%",
+        fontSize:"1.1rem"
     }
   },
   logo: {

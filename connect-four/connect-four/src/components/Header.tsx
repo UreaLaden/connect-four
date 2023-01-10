@@ -1,19 +1,16 @@
-import { Icon, Link } from "@fluentui/react"
+import { Icon } from "@fluentui/react"
 import { styles } from "./Header.css"
 
-export const Header = () => {
-    return(
+export const Header = (props: any) => {
+    const { pauseGame } = props;
+    return (
         <>
-        <button className={styles.menuButton} type={'button'}>
-            <Link className={styles.menuLink} to="/">MENU</Link>
-        </button>
-        <Icon
-            iconName="logo-svg"
-            className={styles.logo}
-        />
-        <button className={styles.menuButton} type={'button'}>
-            <Link className={styles.menuLink} to="/">RESTART</Link>
-        </button>
-    </>
+            <button className={styles.menuButton} type={'button'} onClick={ () => pauseGame()}>MENU</button>
+            <Icon
+                iconName="logo-svg"
+                className={styles.logo}
+            />
+            <button className={styles.menuButton} type={'button'}>RESTART</button>
+        </>
     )
 }

@@ -1,6 +1,7 @@
 import { Icon } from "@fluentui/react"
 import { Player } from "../utils/helpers"
 import { Card } from "./Card"
+import CoinSpace from "./CoinSpace"
 import { styles } from "./GridStyles.css"
 import { Header } from "./Header"
 
@@ -25,6 +26,7 @@ export const TabletGrid = (props:any) =>{
             <div className={styles.gameBoard}>
                 <Icon className={styles.gameBoardBack} iconName={"board-layer-black-large-svg"} />
                 <Icon className={styles.gameBoardFront} iconName={"board-layer-white-large-svg"} />
+                <CoinSpace currentPlayer={currentPlayer} />
                 <div className={styles.playerTurnMarker}>
                     <Icon
                         className={styles.turnIcon}

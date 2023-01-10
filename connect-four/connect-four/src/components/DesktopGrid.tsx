@@ -1,16 +1,18 @@
 import * as React from 'react';
-import { Icon } from "@fluentui/react";
-import { Moves, Player } from "../utils/helpers";
+import { Icon, IProcessedStyleSet } from "@fluentui/react";
+import { getColumn, getRow, makeId, Player } from "../utils/helpers";
 import { Card } from "./Card";
 import { markerPositions, styles } from "./GridStyles.css";
 import { Header } from "./Header";
+import Coin from './Coin';
+import CoinSpace from './CoinSpace';
 
 export const DesktopGrid = (props: any) => {
-    const { currentPlayer,lastMove } = props;
-    
-    const getPositionClass = React.useCallback(()=>{
-        let positionClass:any;
-        switch(lastMove){
+    const { currentPlayer, lastMove, pauseGame } = props;
+
+    const getPositionClass = React.useCallback(() => {
+        let positionClass: any;
+        switch (lastMove) {
             case 'A':
                 positionClass = markerPositions.A;
                 break;
@@ -35,21 +37,21 @@ export const DesktopGrid = (props: any) => {
         }
 
         return positionClass;
-    },[lastMove])
+    }, [lastMove])
+
 
     return (
         <div className={styles.mainContainer}>
             <div className={styles.headerContainer}>
-                <Header />
+                <Header pauseGame={pauseGame} />
             </div>
             <div className={markerPositions.markerContainer}>
                 <div className={getPositionClass()}>
-                    <Icon 
+                    <Icon
                         className={markerPositions.icon}
                         iconName={'marker-red-svg'}
                     />
                 </div>
-
             </div>
             <div className={styles.playerOneStats}>
                 <Card
@@ -66,6 +68,7 @@ export const DesktopGrid = (props: any) => {
             <div className={styles.gameBoard}>
                 <Icon className={styles.gameBoardBack} iconName={"board-layer-black-large-svg"} />
                 <Icon className={styles.gameBoardFront} iconName={"board-layer-white-large-svg"} />
+                <CoinSpace currentPlayer={currentPlayer} />
                 <div className={styles.playerTurnMarker}>
                     <Icon
                         className={styles.turnIcon}

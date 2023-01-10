@@ -97,4 +97,30 @@ export const styles = mergeStyleSets({
         fontWeight:700,
     }
   },
+  menuLink: {
+    textDecoration: "none",
+    color: Colors.White,
+    fontSize: "3rem",
+    fontFamily: "inherit",
+    ":active":{
+        textDecoration:"none",
+        color: Colors.White,
+        pointer:"cursor"
+    },
+    ":clicked":{
+        textDecoration:"none",
+        color: Colors.White,
+        pointer:"cursor"
+    },
+    ":visited":{
+        textDecoration:"none",
+        color: Colors.White,
+        pointer:"cursor"
+    },
+    ":hover":{
+        textDecoration:"none",
+        color: Colors.White,
+        pointer:"cursor"
+    },
+  },
 });

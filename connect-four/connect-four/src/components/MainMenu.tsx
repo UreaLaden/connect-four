@@ -19,7 +19,6 @@ const MainMenu = () => {
                         <div className={styles.buttonText}>
                             <Link className={styles.buttonText} to="/game">PLAY VS PLAYER</Link>
                         </div>
-                        {/* <img className={styles.pvpSVG} src={"../utils/images/player-vs-player.svg"} alt={"player-vs-player-svg"}/> */}
                         <Icon iconName={"player-vs-player-svg"} className={styles.pvpSVG} />
                     </button>
                     <button type={'button'} className={styles.gameRulesButton} >
