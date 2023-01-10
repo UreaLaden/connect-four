@@ -4,11 +4,11 @@ import { getColumn, getRow, makeId, Player } from "../utils/helpers";
 import { Card } from "./Card";
 import { markerPositions, styles } from "./GridStyles.css";
 import { Header } from "./Header";
-import Coin from './Coin';
 import CoinSpace from './CoinSpace';
+import { MoveSelector } from './MoveSelector';
 
 export const DesktopGrid = (props: any) => {
-    const { currentPlayer, lastMove, pauseGame } = props;
+    const { currentPlayer, lastMove, pauseGame, makeMove } = props;
 
     const getPositionClass = React.useCallback(() => {
         let positionClass: any;
@@ -40,6 +40,11 @@ export const DesktopGrid = (props: any) => {
     }, [lastMove])
 
 
+    React.useEffect(()=>{
+        console.log("Called makeMove");
+        makeMove();
+    },[])
+
     return (
         <div className={styles.mainContainer}>
             <div className={styles.headerContainer}>
@@ -65,6 +70,7 @@ export const DesktopGrid = (props: any) => {
                     description={"PLAYER 2"}
                     points={"13"} />
             </div>
+            <MoveSelector makeMove={makeMove}/>
             <div className={styles.gameBoard}>
                 <Icon className={styles.gameBoardBack} iconName={"board-layer-black-large-svg"} />
                 <Icon className={styles.gameBoardFront} iconName={"board-layer-white-large-svg"} />

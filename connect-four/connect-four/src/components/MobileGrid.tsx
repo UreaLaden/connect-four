@@ -4,9 +4,10 @@ import { Card } from "./Card"
 import { Header } from "./Header"
 import { styles } from "./GridStyles.css"
 import CoinSpace from "./CoinSpace"
+import { MoveSelector } from "./MoveSelector"
 
 export const MobileGrid = (props: any) => {
-    const { currentPlayer, pauseGame } = props;
+    const { currentPlayer, pauseGame, makeMove } = props;
     
     return (
         <div className={styles.mainContainer}>
@@ -23,6 +24,7 @@ export const MobileGrid = (props: any) => {
                     description={"PLAYER 2"}
                     points={"13"} />
             </div>
+            <MoveSelector makeMove={makeMove}/>
             <div className={styles.gameBoard}>
                 <Icon className={styles.gameBoardBack} iconName={"board-layer-black-small-svg"} />
                 <Icon className={styles.gameBoardFront} iconName={"board-layer-white-small-svg"} />

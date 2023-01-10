@@ -17,7 +17,6 @@ Moves.set("G", markerPositions.G);
 export const makeId = (row: number, column: number) => {
   const rowKey = `${String.fromCharCode(65 + row-1)}`;
   const columnKey = `${String.fromCharCode(65 + column-1)}`;
-  console.log(`Key: [${columnKey + rowKey}] (${column},${row})`);
   return columnKey + rowKey;
 };
 

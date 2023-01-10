@@ -8,12 +8,43 @@ export const markerPositions = mergeStyleSets({
         display:"grid",
         gridTemplate:"1fr / repeat(7,1fr)",
     },
+    selectionContainer:{
+      backgroundColor:"rbga(0,0,0,0.5)",
+      display:"grid",
+      gridTemplate:"1fr / repeat(7,1fr)",
+      "@media screen and (min-width:1400px)": {
+        gridRow:"2 / -1",
+        gridColumn:"2 / span 1",
+      },
+      "@media screen and (max-width:1400px)": {
+        gridRow:"3 / span 2",
+        gridColumn:"1 / span 1",
+        width:"80%",
+        height:"115%",
+        justifySelf:"center",
+        transform:"translateY(-10%)",
+        "z-index":22
+      },
+      "@media screen and (max-width:750px)": {
+        width:"90%"
+      },
+      
+    },
+    selectionOption:{
+      "z-index":21,
+      backgroundColor:"rgba(0,0,0,0.2)",
+      border:"1px solid black"
+
+    },
     A:{
         gridColumn:"1 / span 1",
+        gridRow:"1 / -1",
+        "z-index":20,
         display:"flex",
         alignItems:"center",
         justifyContent:"center",
-        marginBottom:"10%"
+        marginBottom:"10%",
+        pointerEvents:"none"
         
     },
     B:{
@@ -21,35 +52,50 @@ export const markerPositions = mergeStyleSets({
         display:"flex",
         alignItems:"center",
         justifyContent:"center",
-        marginBottom:"10%"
+        marginBottom:"10%",
+        gridRow:"1 / -1",
+        "z-index":20,
+        pointerEvents:"none"
     },
     C:{
         gridColumn:"3 / span 1",
         display:"flex",
         alignItems:"center",
         justifyContent:"center",
-        marginBottom:"10%"
+        marginBottom:"10%",
+        gridRow:"1 / -1",
+        "z-index":20,
+        pointerEvents:"none"
     },
     D:{
         gridColumn:"4 / span 1",
         display:"flex",
         alignItems:"center",
         justifyContent:"center",
-        marginBottom:"10%"
+        marginBottom:"10%",
+        gridRow:"1 / -1",
+        "z-index":20,
+        pointerEvents:"none"
     },
     E:{
         gridColumn:"5 / span 1",
         display:"flex",
         alignItems:"center",
         justifyContent:"center",
-        marginBottom:"10%"
+        marginBottom:"10%",
+        gridRow:"1 / -1",
+        "z-index":20,
+        pointerEvents:"none"
     },
     F:{
         gridColumn:"6 / span 1",
         display:"flex",
         alignItems:"center",
         justifyContent:"center",
-        marginBottom:"10%"
+        marginBottom:"10%",
+        gridRow:"1 / -1",
+        "z-index":20,
+        pointerEvents:"none"
     },
     G:{
         gridColumn:"-1 / span 1",
@@ -57,7 +103,10 @@ export const markerPositions = mergeStyleSets({
         alignItems:"center",
         justifyContent:"center",
         marginBottom:"25%",
-        transform:"translateX(-100%)"
+        transform:"translateX(-100%)",
+        gridRow:"1 / -1",
+        "z-index":20,
+        pointerEvents:"none"
     },
     icon:{
         filter: "drop-shadow(0px 4px rgba(0,0,0))"
@@ -188,6 +237,8 @@ export const styles = mergeStyleSets({
     },
     "@media screen and (max-width:1400px)": {
       padding: "2.5% 5% 0 5% ",
+      gridRow:"0 / span 1",
+      gridColumn:"1 / span 1"
     },
     "@media screen and (max-width:750px)": {
       padding: "10% 5% 0 5% ",
@@ -200,6 +251,8 @@ export const styles = mergeStyleSets({
     "@media screen and (max-width:1400px)": {
       padding: "5% 10% 10% 10%",
       gridGap: "5%",
+      gridRow:"2 / span 1",
+      gridColumn:"0 / span 1"
     },
     "@media screen and (max-width:750px)": {
       gridGap: "10%",
@@ -219,16 +272,20 @@ export const styles = mergeStyleSets({
   gameBoard: {
     backgroundColor: "transparent",
     position: "relative",
-    display: "inline-grid",
+    display: "grid",
     alignItems: "center",
     justifyItems: "center",
-    "grid-template-columns": "repeat(12,1fr)",
     minWidth: "400px",
     "@media screen and (min-width:1400px)": {
+      "grid-template-columns": "repeat(12,1fr)",
       gridRow: "3 / -1",
       gridColumn: "1 / span 3",
     },
-    "@media screen and (max-width:1400px)": {},
+    "@media screen and (max-width:1400px)": {
+      "grid-template-columns": "repeat(12,1fr)",
+      gridRow:"3 / -1",
+      gridColumn:"1 / span 3"
+    },
     "@media screen and (max-width:750px)": {
       "grid-template-columns":"30px repeat(12,1fr) 30px"
     }
@@ -243,12 +300,13 @@ export const styles = mergeStyleSets({
       height: "32vh",
     },
     "@media screen and (max-width:1400px)": {
-        height: "37vh",
-        transform: "translateY(-9%)",
+        height: "22vh",
+        gridRow:"-1 / span 2",
+        gridColumn:"1 / span 4"
       },
       "@media screen and (max-width:750px)": {
-        height: "37vh",
-        transform: "translateY(-9%)",
+        height: "34vh",
+        gridRow:"-1 / span 2"
     }
   },
   playerCard: {
@@ -288,7 +346,8 @@ export const styles = mergeStyleSets({
       bottom: "-18%",
     },
     "@media screen and (max-width:750px)": {
-      transform: "translateY(35%)",
+      bottom:"-45%",
+      left:"-15%"
     },
   },
   turnIcon: {

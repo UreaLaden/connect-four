@@ -17,7 +17,7 @@ export const Coin = (props: any) => {
     }
 
     return (
-        <div id={id} className={styles.coinContainer}>
+        <div id={id} className={styles.coinInnerContainer}>
             <Icon iconName={getIconType()} />
             {
                 isWinningCoin &&

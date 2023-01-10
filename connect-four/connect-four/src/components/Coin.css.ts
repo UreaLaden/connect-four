@@ -2,8 +2,9 @@ import {mergeStyleSets} from "@fluentui/react";
 import { Colors } from "../utils/colors";
 
 export const styles = mergeStyleSets({
-    coinContainer:{
-        position:"relative"
+    coinInnerContainer:{
+        position:"relative",
+        display:"none",
     },
     ring:{
         height:"25px",

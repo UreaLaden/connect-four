@@ -14,6 +14,7 @@ const GameSpace = (props: any) => {
     const [endOfTurn, setEndOfTurn] = React.useState<boolean>(false);
     const { width } = useWindowDimensions();
     const [isPaused, setIsPaused] = React.useState<boolean>(false);
+    const [lastMove, setLastMove] = React.useState<string>("A");
 
     React.useEffect(() => {
         if (endOfTurn) {
@@ -21,26 +22,43 @@ const GameSpace = (props: any) => {
         }
     }, [currentPlayer, endOfTurn])
 
-    const pauseGame = () =>{
+    const pauseGame = () => {
         setIsPaused(!isPaused);
+    }
+
+    const makeMove = (position: string) => {
+        console.log("Calling make move");
+        setLastMove(position);
     }
 
     return (
         <>
             <If condition={isPaused}>
                 <Then>
-                 <PauseMenu pauseGame={pauseGame}/>   
+                    <PauseMenu pauseGame={pauseGame} />
                 </Then>
             </If>
             <Switch>
                 <Case condition={width <= 750}>
-                    <MobileGrid currentPlayer={currentPlayer} pauseGame={pauseGame} />
+                    <MobileGrid 
+                        currentPlayer={currentPlayer} 
+                        makeMove={ makeMove} 
+                        lastMove={lastMove} 
+                        pauseGame={pauseGame} />
                 </Case>
                 <Case condition={width >= 1400}>
-                    <DesktopGrid currentPlayer={currentPlayer} lastMove={'A'} pauseGame={pauseGame}/>
+                    <DesktopGrid 
+                        currentPlayer={currentPlayer} 
+                        makeMove={makeMove} 
+                        lastMove={lastMove} 
+                        pauseGame={pauseGame} />
                 </Case>
                 <Default>
-                    <TabletGrid currentPlayer={currentPlayer} pauseGame={pauseGame} />
+                    <TabletGrid 
+                        currentPlayer={currentPlayer} 
+                        makeMove={makeMove} 
+                        lastMove={lastMove} 
+                        pauseGame={pauseGame} />
                 </Default>
             </Switch>
         </>
