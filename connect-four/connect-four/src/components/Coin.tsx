@@ -8,7 +8,7 @@ export const Coin = (props: any) => {
     const { currentPlayer, id } = props;
     const { width } = getWindowDimensions();
     const [isWinningCoin, setIsWinningCoin] = React.useState<boolean>(false)
-
+    const column = id.split('')[0];
     const getIconType = () => {
         if (width >= 800) {
             return `counter-${currentPlayer === Player.PLAYER_ONE ? 'red' : 'yellow'}-large-svg`
@@ -18,7 +18,7 @@ export const Coin = (props: any) => {
 
     return (
         <div id={id} className={styles.coinInnerContainer}>
-            <Icon iconName={getIconType()} />
+            <Icon className={column} iconName={getIconType()} />
             {
                 isWinningCoin &&
                 <div className={styles.ring}></div>

@@ -1,5 +1,11 @@
 import { Coordinate, PlayerType } from "./Game";
 
+/**
+ * Node class for each played position
+ * - _coordinate {Coordinate}
+ * - _playerType {PlayerType}
+ * - _neighbours {Node[]}
+ */
 export class Node {
     private _coordinate:Coordinate;
     private _playerType:PlayerType;

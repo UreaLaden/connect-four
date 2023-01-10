@@ -36,14 +36,9 @@ export const DesktopGrid = (props: any) => {
                 break;
         }
 
-        return positionClass;
+        return positionClass ?? markerPositions.None;
     }, [lastMove])
 
-
-    React.useEffect(()=>{
-        console.log("Called makeMove");
-        makeMove();
-    },[])
 
     return (
         <div className={styles.mainContainer}>

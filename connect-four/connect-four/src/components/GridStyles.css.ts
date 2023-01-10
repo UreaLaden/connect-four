@@ -7,6 +7,7 @@ export const markerPositions = mergeStyleSets({
         gridColumn:"2 / span 1",
         display:"grid",
         gridTemplate:"1fr / repeat(7,1fr)",
+        position:"relative"
     },
     selectionContainer:{
       backgroundColor:"rbga(0,0,0,0.5)",
@@ -15,6 +16,9 @@ export const markerPositions = mergeStyleSets({
       "@media screen and (min-width:1400px)": {
         gridRow:"2 / -1",
         gridColumn:"2 / span 1",
+        width:"92%",
+        transform:"translateX(4%)",
+        "z-index":22
       },
       "@media screen and (max-width:1400px)": {
         gridRow:"3 / span 2",
@@ -34,79 +38,72 @@ export const markerPositions = mergeStyleSets({
       "z-index":21,
       backgroundColor:"rgba(0,0,0,0.2)",
       border:"1px solid black"
-
+    },
+    None:{
+      display:"none"
     },
     A:{
         gridColumn:"1 / span 1",
         gridRow:"1 / -1",
         "z-index":20,
-        display:"flex",
-        alignItems:"center",
-        justifyContent:"center",
-        marginBottom:"10%",
-        pointerEvents:"none"
-        
+        pointerEvents:"none",
+        position:"absolute",
+        bottom:"35%",
+        left:"50%"
     },
     B:{
         gridColumn:"2 / span 1",
-        display:"flex",
-        alignItems:"center",
-        justifyContent:"center",
-        marginBottom:"10%",
         gridRow:"1 / -1",
         "z-index":20,
-        pointerEvents:"none"
+        pointerEvents:"none",
+        position:"absolute",
+        bottom:"35%",
+        right:"20%"
     },
     C:{
         gridColumn:"3 / span 1",
-        display:"flex",
-        alignItems:"center",
-        justifyContent:"center",
-        marginBottom:"10%",
         gridRow:"1 / -1",
         "z-index":20,
-        pointerEvents:"none"
+        pointerEvents:"none",
+        position:"absolute",
+        bottom:"35%",
+        left:"40%"
     },
     D:{
         gridColumn:"4 / span 1",
-        display:"flex",
-        alignItems:"center",
-        justifyContent:"center",
-        marginBottom:"10%",
         gridRow:"1 / -1",
         "z-index":20,
-        pointerEvents:"none"
+        pointerEvents:"none",
+        position:"absolute",
+        bottom:"35%",
+        left:"30%"
     },
     E:{
         gridColumn:"5 / span 1",
-        display:"flex",
-        alignItems:"center",
-        justifyContent:"center",
-        marginBottom:"10%",
         gridRow:"1 / -1",
         "z-index":20,
-        pointerEvents:"none"
+        pointerEvents:"none",
+        position:"absolute",
+        bottom:"35%",
+        left:"25%"
     },
     F:{
         gridColumn:"6 / span 1",
-        display:"flex",
-        alignItems:"center",
-        justifyContent:"center",
-        marginBottom:"10%",
         gridRow:"1 / -1",
         "z-index":20,
-        pointerEvents:"none"
+        pointerEvents:"none",
+        position:"absolute",
+        bottom:"35%",
+        left:"15%"
     },
     G:{
         gridColumn:"-1 / span 1",
-        display:"flex",
-        alignItems:"center",
-        justifyContent:"center",
-        marginBottom:"25%",
-        transform:"translateX(-100%)",
         gridRow:"1 / -1",
         "z-index":20,
-        pointerEvents:"none"
+        pointerEvents:"none",
+        position:"absolute",
+        bottom:"35%",
+        transform:"translateX(-270%)"
     },
     icon:{
         filter: "drop-shadow(0px 4px rgba(0,0,0))"
@@ -137,6 +134,10 @@ export const markerPositions = mergeStyleSets({
       gridColumn:"2 / span 7",
       display:"grid",
       gridTemplate:"repeat(6,1fr) / repeat(7,1fr)",
+      "@media screen and (min-width:1400px)": {
+        width:"98%",
+        transform:"translateX(1%) scale(.99)"
+      },
       "@media screen and (max-width:1400px)": {
         height:"96%"
       },
@@ -145,70 +146,6 @@ export const markerPositions = mergeStyleSets({
       },
     }
   })
-  export const coinA = mergeStyleSets({
-    posA:{},
-    posB:{},
-    posC:{},
-    posD:{},
-    posE:{},
-    posF:{},
-    posG:{}
-  });
- 
-  export const coinB = mergeStyleSets({
-    posA:{},
-    posB:{},
-    posC:{},
-    posD:{},
-    posE:{},
-    posF:{},
-    posG:{}
-  });
-  export const coinC = mergeStyleSets({
-    posA:{},
-    posB:{},
-    posC:{},
-    posD:{},
-    posE:{},
-    posF:{},
-    posG:{}
-  });
-  export const coinD = mergeStyleSets({
-    posA:{},
-    posB:{},
-    posC:{},
-    posD:{},
-    posE:{},
-    posF:{},
-    posG:{}
-  });
-  export const coinE = mergeStyleSets({
-    posA:{},
-    posB:{},
-    posC:{},
-    posD:{},
-    posE:{},
-    posF:{},
-    posG:{}
-  });
-  export const coinF = mergeStyleSets({
-    posA:{},
-    posB:{},
-    posC:{},
-    posD:{},
-    posE:{},
-    posF:{},
-    posG:{}
-  });
-  export const coinG = mergeStyleSets({
-    posA:{},
-    posB:{},
-    posC:{},
-    posD:{},
-    posE:{},
-    posF:{},
-    posG:{}
-  });
 
 export const styles = mergeStyleSets({
   mainContainer: {
@@ -340,7 +277,7 @@ export const styles = mergeStyleSets({
     position: "absolute",
     "z-index": 100,
     "@media screen and (min-width:1400px)": {
-        bottom:"-5%"
+        top:"99%"
     },
     "@media screen and (max-width:1400px)": {
       bottom: "-18%",

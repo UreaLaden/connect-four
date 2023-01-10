@@ -44,6 +44,12 @@ export class Game {
     this.winner = undefined;
     this.populateCoordinates();
   }
+
+  /**
+   * Populates an Array of Columns [A..G]
+   * Fills a Map of coordinates 
+   * - [2 Digit Key,(row,col)]
+   */
   private populateCoordinates = (): void => {
     for (let col = 0; col < this._maxCols; col++) {
       this.columnsInPlay.push(String.fromCharCode(65 + col));

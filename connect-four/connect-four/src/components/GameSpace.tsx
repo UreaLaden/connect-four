@@ -22,13 +22,17 @@ const GameSpace = (props: any) => {
         }
     }, [currentPlayer, endOfTurn])
 
+    React.useEffect(()=>{
+        
+    },[lastMove])
+
     const pauseGame = () => {
         setIsPaused(!isPaused);
     }
 
-    const makeMove = (position: string) => {
-        console.log("Calling make move");
-        setLastMove(position);
+    const makeMove = (nextMove: string) => {
+        console.log(`Calling make move at ${nextMove}`);
+        setLastMove(nextMove);
     }
 
     return (
