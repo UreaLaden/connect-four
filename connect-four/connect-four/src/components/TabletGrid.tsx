@@ -24,7 +24,7 @@ export const TabletGrid = (props:any) =>{
                     description={"PLAYER 2"}
                     points={"13"} />
             </div>
-            <MoveSelector makeMove={makeMove}/>
+            <MoveSelector makeMove={makeMove} currentPlayer={currentPlayer}/>
             <div className={styles.gameBoard}>
                 <Icon className={styles.gameBoardBack} iconName={"board-layer-black-large-svg"} />
                 <Icon className={styles.gameBoardFront} iconName={"board-layer-white-large-svg"} />

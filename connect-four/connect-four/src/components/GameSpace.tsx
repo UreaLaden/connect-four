@@ -18,14 +18,13 @@ const GameSpace = (props: any) => {
 
     React.useEffect(() => {
         if (endOfTurn) {
-            setCurrentPlayer(currentPlayer === Player.PLAYER_ONE ? Player.PLAYER_TWO : Player.PLAYER_ONE);
         }
     }, [currentPlayer, endOfTurn])
 
     React.useEffect(()=>{
-
+        
     },[lastMove])
-
+    
     const pauseGame = () => {
         setIsPaused(!isPaused);
     }
@@ -33,6 +32,7 @@ const GameSpace = (props: any) => {
     const makeMove = (nextMove: string) => {
         console.log(`Calling make move at ${nextMove}`);
         setLastMove(nextMove);
+        setCurrentPlayer(currentPlayer === Player.PLAYER_ONE ? Player.PLAYER_TWO : Player.PLAYER_ONE);
     }
 
    
