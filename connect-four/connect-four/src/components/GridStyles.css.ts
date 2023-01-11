@@ -245,6 +245,8 @@ export const styles = mergeStyleSets({
     alignItems: "center",
     justifyItems: "center",
     minWidth: "400px",
+    pointerEvents:"none",
+    "z-index":50,
     "@media screen and (min-width:1400px)": {
       "grid-template-columns": "repeat(12,1fr)",
       gridRow: "3 / -1",
