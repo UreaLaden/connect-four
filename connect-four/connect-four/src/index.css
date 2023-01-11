@@ -17,22 +17,22 @@ code {
 }
 
 div[id*="active"][id*="0"]{
-  animation:drop-coin-5 2s ease-in forwards, fade-in 1s ease-in forwards
+  animation: fade-in .1s ease-in forwards, drop-coin-0 .25s ease-in forwards
 }
 div[id*="active"][id*="1"]{
-  animation:drop-coin-5 2s ease-in , fade-in 1s ease-in forwards
+  animation: fade-in .1s ease-in forwards, drop-coin-1 .25s ease-in forwards
 }
 div[id*="active"][id*="2"]{
-  animation:drop-coin-5 2s ease-in , fade-in 1s ease-in forwards
+  animation: fade-in .1s ease-in forwards, drop-coin-2 .25s ease-in forwards
 }
 div[id*="active"][id*="3"]{
-  animation:drop-coin-5 2s ease-in , fade-in 1s ease-in forwards
+  animation: fade-in .1s ease-in forwards, drop-coin-3 .25s ease-in forwards
 }
 div[id*="active"][id*="4"]{
-  animation:drop-coin-5 2s ease-in , fade-in 1s ease-in forwards
+  animation: fade-in .1s ease-in forwards, drop-coin-4 .25s ease-in forwards
 }
 div[id*="active"][id*="5"]{
-    animation:drop-coin-5 2s ease-in , fade-in 1s ease-in forwards
+  animation: fade-in .1s ease-in forwards, drop-coin-5 .25s ease-in forwards
 }
 
 @keyframes fade-in {
@@ -47,12 +47,32 @@ div[id*="active"][id*="5"]{
 
 @keyframes drop-coin-0{
   0%{
-    transform:translateY(0%);
+    grid-row:1;
+    grid-column:1;
+  }
+  20%{
+    grid-row:2;
+    grid-column:1;
+  }
+  40%{
+    grid-row:3;
+    grid-column:1;
+  }
+  60%{
+    grid-row:4;
+    grid-column:1;
+  }
+  80%{
+    grid-row:5;
+    grid-column:1;
+  }
+  90%{
+    grid-row:6;
+    grid-column:1;
   }
   100%{
     grid-row:7;
     grid-column:1;
-    
   }
 }
 @keyframes drop-coin-1{
