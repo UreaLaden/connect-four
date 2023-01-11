@@ -23,7 +23,7 @@ const GameSpace = (props: any) => {
     }, [currentPlayer, endOfTurn])
 
     React.useEffect(()=>{
-        
+
     },[lastMove])
 
     const pauseGame = () => {
@@ -34,6 +34,8 @@ const GameSpace = (props: any) => {
         console.log(`Calling make move at ${nextMove}`);
         setLastMove(nextMove);
     }
+
+   
 
     return (
         <>

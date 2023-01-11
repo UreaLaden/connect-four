@@ -8,14 +8,14 @@ export const CoinSpace = (props: any) => {
     return (
         <div className={markerPositions.coinContainer}>
             <div className={markerPositions.coinSpace}>
-                {
+                {/* {
                     Array.from({ length: 42 }, () => 1).map((val, idx) => {
                         return <Coin
                             key={idx}
                             id={makeId(getRow(idx), getColumn(idx))}
                             currentPlayer={currentPlayer} />
                     })
-                }
+                } */}
             </div>
         </div>
     )
