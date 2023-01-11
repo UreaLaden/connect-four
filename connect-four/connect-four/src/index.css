@@ -15,3 +15,83 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+div[id*="active"][id*="0"]{
+  animation:drop-coin-5 2s ease-in forwards, fade-in 1s ease-in forwards
+}
+div[id*="active"][id*="1"]{
+  animation:drop-coin-5 2s ease-in , fade-in 1s ease-in forwards
+}
+div[id*="active"][id*="2"]{
+  animation:drop-coin-5 2s ease-in , fade-in 1s ease-in forwards
+}
+div[id*="active"][id*="3"]{
+  animation:drop-coin-5 2s ease-in , fade-in 1s ease-in forwards
+}
+div[id*="active"][id*="4"]{
+  animation:drop-coin-5 2s ease-in , fade-in 1s ease-in forwards
+}
+div[id*="active"][id*="5"]{
+    animation:drop-coin-5 2s ease-in , fade-in 1s ease-in forwards
+}
+
+@keyframes fade-in {
+  0%{
+    opacity:0;
+  }  
+  
+  100%{
+    opacity:1;
+  }
+}
+
+@keyframes drop-coin-0{
+  0%{
+    transform:translateY(0%);
+  }
+  100%{
+    grid-row:7;
+    grid-column:1;
+    
+  }
+}
+@keyframes drop-coin-1{
+  0%{
+    grid-row: 1 / 1;
+  }
+  100%{
+    grid-row:6;
+  }
+}
+@keyframes drop-coin-2{
+  0%{
+    grid-row: 1 / 1;
+  }
+  100%{
+    grid-row:5;
+  }
+}
+@keyframes drop-coin-3{
+  0%{
+    grid-row: 1 / 1;
+  }
+  100%{
+    grid-row:4;
+  }
+}
+@keyframes drop-coin-4{
+  0%{
+    grid-row: 1 / 1;
+  }
+  100%{
+    grid-row:3;
+  }
+}
+@keyframes drop-coin-5{
+  0%{
+    grid-row: 1 / 1;
+  }
+  100%{
+    grid-row:2;
+  }
+}

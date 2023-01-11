@@ -53,9 +53,9 @@ export const MoveSelector = (props:any) => {
                     let childId;
                     for(let i=1;i<children.length;i++){
                         childId = children.item(i)?.getAttribute("id");
-                        if(!childId?.includes('--played')){
+                        if(!childId?.includes('--active')){
                             console.log(`Playing: ${childId}`);
-                            children.item(i)?.setAttribute("id",childId + '--played');
+                            children.item(i)?.setAttribute("id",childId + '--active');
                             break;
                         }
                     }
