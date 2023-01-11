@@ -77,7 +77,19 @@ div[id*="active"][id*="5"]{
 }
 @keyframes drop-coin-1{
   0%{
-    grid-row: 1 / 1;
+    grid-row: 1;
+  }
+  20%{
+    grid-row:2;
+  }
+  40%{
+    grid-row:3;
+  }
+  80%{
+    grid-row:4;
+  }
+  90%{
+    grid-row:5;
   }
   100%{
     grid-row:6;
@@ -85,7 +97,16 @@ div[id*="active"][id*="5"]{
 }
 @keyframes drop-coin-2{
   0%{
-    grid-row: 1 / 1;
+    grid-row: 1;
+  }
+  20%{
+    grid-row:2;
+  }
+  40%{
+    grid-row:3;
+  }
+  80%{
+    grid-row:4;
   }
   100%{
     grid-row:5;
@@ -93,7 +114,13 @@ div[id*="active"][id*="5"]{
 }
 @keyframes drop-coin-3{
   0%{
-    grid-row: 1 / 1;
+    grid-row: 1;
+  }
+  25%{
+    grid-row:2;
+  }
+  50%{
+    grid-row:3;
   }
   100%{
     grid-row:4;
@@ -101,7 +128,10 @@ div[id*="active"][id*="5"]{
 }
 @keyframes drop-coin-4{
   0%{
-    grid-row: 1 / 1;
+    grid-row: 1;
+  }
+  0%{
+    grid-row:2;
   }
   100%{
     grid-row:3;
